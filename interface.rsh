@@ -1,42 +1,37 @@
 "reach 0.1";
 "use strict";
 // -----------------------------------------------
-// Name: Interface Template
-// Description: NP Rapp simple
-// Author: Nicholas Shellabarger
-// Version: 0.0.2 - initial
-// Requires Reach v0.1.7 (stable)
+// Name: KINN Base
+// Version: 0.0.2 - add view
+// Requires Reach v0.1.11-rc7 (27cb9643) or later
 // ----------------------------------------------
+
+// FUNCS
+
+export const view = (state) => {
+  return {
+    state,
+  };
+};
+
+// TYPES
+
+export const State = Struct([
+  ["manager", Address],
+  ["closed", Bool],
+]);
+
+export const Params = Object({});
+
+
+// CONTRACT
+
 export const Event = () => [];
-export const Participants = () => [
-  Participant("Alice", {
-    getParams: Fun(
-      [],
-      Object({
-        foo: UInt,
-      })
-    ),
-  }),
-  ParticipantClass("Relay", {}),
-];
+export const Participants = () => [];
 export const Views = () => [];
 export const Api = () => [];
-export const App = (map) => {
-  const [{ amt, ttl }, [addr, _], [Alice, Relay], _, _, _] = map;
-  Alice.only(() => {
-    const { foo } = declassify(interact.getParams());
-  });
-  Alice.publish(foo).pay(amt+foo)
-  .timeout(relativeTime(ttl), () => {
-    Anybody.publish()
-    transfer(balance()).to(addr)
-    commit();
-    exit();
-  })
-  transfer(amt).to(addr);
-  commit();
-  Relay.publish();
-  transfer(balance()).to(addr)
+export const App = (_) => {
+  Anybody.publish();
   commit();
   exit();
 };
