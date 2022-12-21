@@ -2,13 +2,13 @@
 "use strict";
 // -----------------------------------------------
 // Name: Humble Pool
-// Version: 0.1.0 - starter initial
+// Version: 0.1.1 - fix parse issue
 // Requires Reach v0.1.11-rc7 (27cb9643) or later
 // ----------------------------------------------
 
 import {
   Params as BaseParams,
-  MToken,
+  MToken
 } from "@KinnFoundation/base#base-v0.1.11r16:interface.rsh";
 
 // TYPES
