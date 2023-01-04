@@ -2,7 +2,7 @@
 "use strict";
 // -----------------------------------------------
 // Name: Humble Pool
-// Version: 0.1.1 - fix parse issue
+// Version: 0.1.2 - fix struct token order
 // Requires Reach v0.1.11-rc7 (27cb9643) or later
 // ----------------------------------------------
 
@@ -32,8 +32,8 @@ const PoolState = Struct([
   ["poolBals", Bals],
   ["protoInfo", ProtoInfo],
   ["protoBals", Bals],
-  ["tokA", UInt],
-  ["tokB", MToken],
+  ["tokB", Token],
+  ["tokA", MToken],
 ]);
 
 export const State = Struct([...Struct.fields(PoolState)]);
